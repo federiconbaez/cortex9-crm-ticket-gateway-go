@@ -1,0 +1,63 @@
+# Reglas de grabación y alertas SLO del gateway.
+# SLO de disponibilidad: 99.9 % de requests no-5xx en 30 días.
+# SLO de latencia: 99 % de POST /v1/tickets bajo 250 ms.
+# Alertas multi-ventana / multi-burn-rate (libro de SRE de Google, cap. 5 del workbook).
+groups:
+  - name: crm-ticket-gateway-sli
+    interval: 30s
+    rules:
+      - record: sli:http_errors:ratio_rate5m
+        expr: |
+          sum(rate(http_requests_total{code=~"5.."}[5m]))
+          / clamp_min(sum(rate(http_requests_total[5m])), 1e-9)
+      - record: sli:http_errors:ratio_rate1h
+        expr: |
+          sum(rate(http_requests_total{code=~"5.."}[1h]))
+          / clamp_min(sum(rate(http_requests_total[1h])), 1e-9)
+      - record: sli:http_errors:ratio_rate6h
+        expr: |
+          sum(rate(http_requests_total{code=~"5.."}[6h]))
+          / clamp_min(sum(rate(http_requests_total[6h])), 1e-9)
+      - record: sli:create_latency_good:ratio_rate5m
+        expr: |
+          sum(rate(http_request_duration_seconds_bucket{route="POST /v1/tickets",le="0.25"}[5m]))
+          / clamp_min(sum(rate(http_request_duration_seconds_count{route="POST /v1/tickets"}[5m])), 1e-9)
+  - name: crm-ticket-gateway-alerts
+    rules:
+      - alert: ErrorBudgetFastBurn
+        # 14.4x consume el 2 % del presupuesto mensual en 1 hora.
+        expr: sli:http_errors:ratio_rate1h > (14.4 * 0.001) and sli:http_errors:ratio_rate5m > (14.4 * 0.001)
+        for: 2m
+        labels: {severity: page}
+        annotations:
+          summary: "Quema rápida del presupuesto de errores (5xx)"
+      - alert: ErrorBudgetSlowBurn
+        expr: sli:http_errors:ratio_rate6h > (6 * 0.001)
+        for: 15m
+        labels: {severity: ticket}
+        annotations:
+          summary: "Quema lenta del presupuesto de errores (5xx)"
+      - alert: CreateLatencySLO
+        expr: sli:create_latency_good:ratio_rate5m < 0.99
+        for: 10m
+        labels: {severity: ticket}
+        annotations:
+          summary: "Menos del 99 % de POST /v1/tickets bajo 250 ms"
+      - alert: CircuitBreakerOpen
+        expr: max by (name) (circuit_breaker_state) == 2
+        for: 1m
+        labels: {severity: ticket}
+        annotations:
+          summary: "Breaker {{ $labels.name }} abierto"
+      - alert: OutboxLagHigh
+        expr: outbox_oldest_pending_age_seconds > 30
+        for: 5m
+        labels: {severity: page}
+        annotations:
+          summary: "La outbox no se está publicando (evento pendiente con más de 30 s)"
+      - alert: DLQNotEmpty
+        expr: queue_depth{state="dlq"} > 0
+        for: 10m
+        labels: {severity: ticket}
+        annotations:
+          summary: "Hay mensajes en la DLQ"

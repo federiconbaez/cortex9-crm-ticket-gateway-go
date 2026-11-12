@@ -1,0 +1,14 @@
+# Collector mínimo: recibe OTLP/HTTP del gateway y lo imprime (debug).
+receivers:
+  otlp:
+    protocols:
+      http:
+        endpoint: 0.0.0.0:4318
+exporters:
+  debug:
+    verbosity: basic
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      exporters: [debug]

@@ -1,0 +1,10 @@
+# binarios y artefactos locales
+/gateway
+/loadtest
+*.test
+*.out
+*.prof
+/tmp/
+.idea/
+.vscode/
+.DS_Store

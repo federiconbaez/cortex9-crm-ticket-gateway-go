@@ -1,0 +1,690 @@
+{
+  "environment": {
+    "go": "go1.27.3",
+    "goarch": "amd64",
+    "goos": "linux",
+    "note": "generador y servidor comparten la misma máquina y CPU (loopback)",
+    "num_cpu": 8,
+    "seed": 20261112
+  },
+  "results": [
+    {
+      "scenario": {
+        "name": "baseline",
+        "description": "Mezcla 30 % POST / 70 % GET, 50 tenants, 10 % de POST repetidos con la misma Idempotency-Key, sin fallas.",
+        "rps": 2000,
+        "seconds": 8,
+        "write_ratio": 0.3,
+        "duplicate_post_ratio": 0.1,
+        "clients": 50,
+        "hot_client_rps": 0,
+        "downstream_error_rate": 0,
+        "rate_limit_per_client": 1000,
+        "rate_burst_per_client": 2000
+      },
+      "repetition": 1,
+      "warmup_samples_excluded": 2000,
+      "sent": 16000,
+      "achieved_rps": 1999.6,
+      "by_status_code": {
+        "200": 11213,
+        "201": 4777,
+        "409": 10
+      },
+      "transport_errors": 0,
+      "latency_ms_all": {
+        "P50": 1.62,
+        "P90": 3.699,
+        "P99": 4.198,
+        "P999": 4.602,
+        "Max": 5.537
+      },
+      "latency_ms_normal_clients": {
+        "P50": 1.62,
+        "P90": 3.699,
+        "P99": 4.198,
+        "P999": 4.602,
+        "Max": 5.537
+      },
+      "latency_ms_post": {
+        "P50": 3.19,
+        "P90": 3.87,
+        "P99": 4.359,
+        "P999": 4.784,
+        "Max": 5.537
+      },
+      "latency_ms_get": {
+        "P50": 0.943,
+        "P90": 3.494,
+        "P99": 4.099,
+        "P999": 4.553,
+        "Max": 4.732
+      },
+      "triage_by_source": {
+        "agent": 3806,
+        "fallback_low_confidence": 500
+      },
+      "normal_clients_429_ratio": 0,
+      "unique_idempotency_keys_ok": 4306,
+      "tickets_stored": 4306,
+      "cache_hit_ratio": 0.657,
+      "after_drain": {
+        "breaker_notifier": "closed",
+        "breaker_triage": "closed",
+        "dlq": 0,
+        "notified": 4306,
+        "notifier_calls": 4306,
+        "notifier_failed": 0,
+        "outbox_pending": 0,
+        "queue_delayed": 0,
+        "queue_ready": 0,
+        "triage_agent": 3806,
+        "triage_fallback_total": 500
+      }
+    },
+    {
+      "scenario": {
+        "name": "baseline",
+        "description": "Mezcla 30 % POST / 70 % GET, 50 tenants, 10 % de POST repetidos con la misma Idempotency-Key, sin fallas.",
+        "rps": 2000,
+        "seconds": 8,
+        "write_ratio": 0.3,
+        "duplicate_post_ratio": 0.1,
+        "clients": 50,
+        "hot_client_rps": 0,
+        "downstream_error_rate": 0,
+        "rate_limit_per_client": 1000,
+        "rate_burst_per_client": 2000
+      },
+      "repetition": 2,
+      "warmup_samples_excluded": 2000,
+      "sent": 16000,
+      "achieved_rps": 1999.4,
+      "by_status_code": {
+        "200": 11213,
+        "201": 4778,
+        "409": 9
+      },
+      "transport_errors": 0,
+      "latency_ms_all": {
+        "P50": 1.577,
+        "P90": 3.747,
+        "P99": 4.229,
+        "P999": 4.648,
+        "Max": 5.386
+      },
+      "latency_ms_normal_clients": {
+        "P50": 1.577,
+        "P90": 3.747,
+        "P99": 4.229,
+        "P999": 4.648,
+        "Max": 5.386
+      },
+      "latency_ms_post": {
+        "P50": 3.218,
+        "P90": 3.907,
+        "P99": 4.358,
+        "P999": 4.695,
+        "Max": 4.912
+      },
+      "latency_ms_get": {
+        "P50": 0.956,
+        "P90": 3.528,
+        "P99": 4.129,
+        "P999": 4.611,
+        "Max": 5.386
+      },
+      "triage_by_source": {
+        "agent": 3806,
+        "fallback_low_confidence": 500
+      },
+      "normal_clients_429_ratio": 0,
+      "unique_idempotency_keys_ok": 4306,
+      "tickets_stored": 4306,
+      "cache_hit_ratio": 0.658,
+      "after_drain": {
+        "breaker_notifier": "closed",
+        "breaker_triage": "closed",
+        "dlq": 0,
+        "notified": 4306,
+        "notifier_calls": 4306,
+        "notifier_failed": 0,
+        "outbox_pending": 0,
+        "queue_delayed": 0,
+        "queue_ready": 0,
+        "triage_agent": 3806,
+        "triage_fallback_total": 500
+      }
+    },
+    {
+      "scenario": {
+        "name": "baseline",
+        "description": "Mezcla 30 % POST / 70 % GET, 50 tenants, 10 % de POST repetidos con la misma Idempotency-Key, sin fallas.",
+        "rps": 2000,
+        "seconds": 8,
+        "write_ratio": 0.3,
+        "duplicate_post_ratio": 0.1,
+        "clients": 50,
+        "hot_client_rps": 0,
+        "downstream_error_rate": 0,
+        "rate_limit_per_client": 1000,
+        "rate_burst_per_client": 2000
+      },
+      "repetition": 3,
+      "warmup_samples_excluded": 2000,
+      "sent": 16000,
+      "achieved_rps": 1999.6,
+      "by_status_code": {
+        "200": 11213,
+        "201": 4779,
+        "409": 8
+      },
+      "transport_errors": 0,
+      "latency_ms_all": {
+        "P50": 1.596,
+        "P90": 3.754,
+        "P99": 4.224,
+        "P999": 4.58,
+        "Max": 4.833
+      },
+      "latency_ms_normal_clients": {
+        "P50": 1.596,
+        "P90": 3.754,
+        "P99": 4.224,
+        "P999": 4.58,
+        "Max": 4.833
+      },
+      "latency_ms_post": {
+        "P50": 3.217,
+        "P90": 3.899,
+        "P99": 4.324,
+        "P999": 4.67,
+        "Max": 4.833
+      },
+      "latency_ms_get": {
+        "P50": 0.939,
+        "P90": 3.525,
+        "P99": 4.127,
+        "P999": 4.502,
+        "Max": 4.828
+      },
+      "triage_by_source": {
+        "agent": 3806,
+        "fallback_low_confidence": 500
+      },
+      "normal_clients_429_ratio": 0,
+      "unique_idempotency_keys_ok": 4306,
+      "tickets_stored": 4306,
+      "cache_hit_ratio": 0.658,
+      "after_drain": {
+        "breaker_notifier": "closed",
+        "breaker_triage": "closed",
+        "dlq": 0,
+        "notified": 4306,
+        "notifier_calls": 4306,
+        "notifier_failed": 0,
+        "outbox_pending": 0,
+        "queue_delayed": 0,
+        "queue_ready": 0,
+        "triage_agent": 3806,
+        "triage_fallback_total": 500
+      }
+    },
+    {
+      "scenario": {
+        "name": "downstream_chaos",
+        "description": "Igual que baseline pero el notificador y el agente de IA fallan el 50 % de las veces.",
+        "rps": 2000,
+        "seconds": 8,
+        "write_ratio": 0.3,
+        "duplicate_post_ratio": 0.1,
+        "clients": 50,
+        "hot_client_rps": 0,
+        "downstream_error_rate": 0.5,
+        "rate_limit_per_client": 1000,
+        "rate_burst_per_client": 2000
+      },
+      "repetition": 1,
+      "warmup_samples_excluded": 2000,
+      "sent": 16000,
+      "achieved_rps": 1999.3,
+      "by_status_code": {
+        "200": 11213,
+        "201": 4779,
+        "409": 8
+      },
+      "transport_errors": 0,
+      "latency_ms_all": {
+        "P50": 1.333,
+        "P90": 3.731,
+        "P99": 4.296,
+        "P999": 4.785,
+        "Max": 5.982
+      },
+      "latency_ms_normal_clients": {
+        "P50": 1.333,
+        "P90": 3.731,
+        "P99": 4.296,
+        "P999": 4.785,
+        "Max": 5.982
+      },
+      "latency_ms_post": {
+        "P50": 3.165,
+        "P90": 3.923,
+        "P99": 4.42,
+        "P999": 4.862,
+        "Max": 5.982
+      },
+      "latency_ms_get": {
+        "P50": 0.928,
+        "P90": 3.482,
+        "P99": 4.165,
+        "P999": 4.717,
+        "Max": 5.596
+      },
+      "triage_by_source": {
+        "agent": 138,
+        "fallback_agent_error": 154,
+        "fallback_breaker_open": 3996,
+        "fallback_low_confidence": 18
+      },
+      "normal_clients_429_ratio": 0,
+      "unique_idempotency_keys_ok": 4306,
+      "tickets_stored": 4306,
+      "cache_hit_ratio": 0.693,
+      "after_drain": {
+        "breaker_notifier": "open",
+        "breaker_triage": "open",
+        "dlq": 4268,
+        "notified": 38,
+        "notifier_calls": 85,
+        "notifier_failed": 47,
+        "outbox_pending": 0,
+        "queue_delayed": 0,
+        "queue_ready": 0,
+        "triage_agent": 138,
+        "triage_fallback_total": 4168
+      }
+    },
+    {
+      "scenario": {
+        "name": "downstream_chaos",
+        "description": "Igual que baseline pero el notificador y el agente de IA fallan el 50 % de las veces.",
+        "rps": 2000,
+        "seconds": 8,
+        "write_ratio": 0.3,
+        "duplicate_post_ratio": 0.1,
+        "clients": 50,
+        "hot_client_rps": 0,
+        "downstream_error_rate": 0.5,
+        "rate_limit_per_client": 1000,
+        "rate_burst_per_client": 2000
+      },
+      "repetition": 2,
+      "warmup_samples_excluded": 2000,
+      "sent": 16000,
+      "achieved_rps": 1999.3,
+      "by_status_code": {
+        "200": 11213,
+        "201": 4777,
+        "409": 10
+      },
+      "transport_errors": 0,
+      "latency_ms_all": {
+        "P50": 1.294,
+        "P90": 3.744,
+        "P99": 4.427,
+        "P999": 6.672,
+        "Max": 12.675
+      },
+      "latency_ms_normal_clients": {
+        "P50": 1.294,
+        "P90": 3.744,
+        "P99": 4.427,
+        "P999": 6.672,
+        "Max": 12.675
+      },
+      "latency_ms_post": {
+        "P50": 3.202,
+        "P90": 3.954,
+        "P99": 4.684,
+        "P999": 8.428,
+        "Max": 12.675
+      },
+      "latency_ms_get": {
+        "P50": 0.912,
+        "P90": 3.448,
+        "P99": 4.266,
+        "P999": 5.078,
+        "Max": 12.21
+      },
+      "triage_by_source": {
+        "agent": 34,
+        "fallback_agent_error": 38,
+        "fallback_breaker_open": 4231,
+        "fallback_low_confidence": 3
+      },
+      "normal_clients_429_ratio": 0,
+      "unique_idempotency_keys_ok": 4306,
+      "tickets_stored": 4306,
+      "cache_hit_ratio": 0.702,
+      "after_drain": {
+        "breaker_notifier": "open",
+        "breaker_triage": "half_open",
+        "dlq": 4268,
+        "notified": 38,
+        "notifier_calls": 85,
+        "notifier_failed": 47,
+        "outbox_pending": 0,
+        "queue_delayed": 0,
+        "queue_ready": 0,
+        "triage_agent": 34,
+        "triage_fallback_total": 4272
+      }
+    },
+    {
+      "scenario": {
+        "name": "downstream_chaos",
+        "description": "Igual que baseline pero el notificador y el agente de IA fallan el 50 % de las veces.",
+        "rps": 2000,
+        "seconds": 8,
+        "write_ratio": 0.3,
+        "duplicate_post_ratio": 0.1,
+        "clients": 50,
+        "hot_client_rps": 0,
+        "downstream_error_rate": 0.5,
+        "rate_limit_per_client": 1000,
+        "rate_burst_per_client": 2000
+      },
+      "repetition": 3,
+      "warmup_samples_excluded": 2000,
+      "sent": 16000,
+      "achieved_rps": 1999.5,
+      "by_status_code": {
+        "200": 11213,
+        "201": 4778,
+        "409": 9
+      },
+      "transport_errors": 0,
+      "latency_ms_all": {
+        "P50": 1.318,
+        "P90": 3.73,
+        "P99": 4.282,
+        "P999": 4.788,
+        "Max": 5.718
+      },
+      "latency_ms_normal_clients": {
+        "P50": 1.318,
+        "P90": 3.73,
+        "P99": 4.282,
+        "P999": 4.788,
+        "Max": 5.718
+      },
+      "latency_ms_post": {
+        "P50": 3.213,
+        "P90": 3.93,
+        "P99": 4.415,
+        "P999": 5.041,
+        "Max": 5.67
+      },
+      "latency_ms_get": {
+        "P50": 0.93,
+        "P90": 3.484,
+        "P99": 4.18,
+        "P999": 4.698,
+        "Max": 5.718
+      },
+      "triage_by_source": {
+        "agent": 109,
+        "fallback_agent_error": 118,
+        "fallback_breaker_open": 4067,
+        "fallback_low_confidence": 12
+      },
+      "normal_clients_429_ratio": 0,
+      "unique_idempotency_keys_ok": 4306,
+      "tickets_stored": 4306,
+      "cache_hit_ratio": 0.694,
+      "after_drain": {
+        "breaker_notifier": "open",
+        "breaker_triage": "open",
+        "dlq": 4267,
+        "notified": 39,
+        "notifier_calls": 87,
+        "notifier_failed": 48,
+        "outbox_pending": 0,
+        "queue_delayed": 0,
+        "queue_ready": 0,
+        "triage_agent": 109,
+        "triage_fallback_total": 4197
+      }
+    },
+    {
+      "scenario": {
+        "name": "noisy_neighbor",
+        "description": "Baseline a 1000 rps más un tenant abusivo a 1500 rps con límite de 200 rps por tenant.",
+        "rps": 1000,
+        "seconds": 8,
+        "write_ratio": 0.3,
+        "duplicate_post_ratio": 0.1,
+        "clients": 50,
+        "hot_client_rps": 1500,
+        "downstream_error_rate": 0,
+        "rate_limit_per_client": 200,
+        "rate_burst_per_client": 400
+      },
+      "repetition": 1,
+      "warmup_samples_excluded": 2500,
+      "sent": 20000,
+      "achieved_rps": 2499.5,
+      "by_status_code": {
+        "200": 7594,
+        "201": 2404,
+        "409": 1,
+        "429": 10001
+      },
+      "transport_errors": 0,
+      "latency_ms_all": {
+        "P50": 0.878,
+        "P90": 3.486,
+        "P99": 4.108,
+        "P999": 4.517,
+        "Max": 6.641
+      },
+      "latency_ms_normal_clients": {
+        "P50": 2.205,
+        "P90": 3.697,
+        "P99": 4.209,
+        "P999": 4.63,
+        "Max": 6.376
+      },
+      "latency_ms_post": {
+        "P50": 3.207,
+        "P90": 3.88,
+        "P99": 4.322,
+        "P999": 4.852,
+        "Max": 5.992
+      },
+      "latency_ms_get": {
+        "P50": 0.939,
+        "P90": 3.524,
+        "P99": 4.129,
+        "P999": 4.45,
+        "Max": 6.376
+      },
+      "triage_by_source": {
+        "agent": 1907,
+        "fallback_low_confidence": 259
+      },
+      "hot_client_429_ratio": 0.867,
+      "normal_clients_429_ratio": 0,
+      "unique_idempotency_keys_ok": 2166,
+      "tickets_stored": 2166,
+      "cache_hit_ratio": 0.659,
+      "after_drain": {
+        "breaker_notifier": "closed",
+        "breaker_triage": "closed",
+        "dlq": 0,
+        "notified": 2166,
+        "notifier_calls": 2166,
+        "notifier_failed": 0,
+        "outbox_pending": 0,
+        "queue_delayed": 0,
+        "queue_ready": 0,
+        "triage_agent": 1907,
+        "triage_fallback_total": 259
+      }
+    },
+    {
+      "scenario": {
+        "name": "noisy_neighbor",
+        "description": "Baseline a 1000 rps más un tenant abusivo a 1500 rps con límite de 200 rps por tenant.",
+        "rps": 1000,
+        "seconds": 8,
+        "write_ratio": 0.3,
+        "duplicate_post_ratio": 0.1,
+        "clients": 50,
+        "hot_client_rps": 1500,
+        "downstream_error_rate": 0,
+        "rate_limit_per_client": 200,
+        "rate_burst_per_client": 400
+      },
+      "repetition": 2,
+      "warmup_samples_excluded": 2500,
+      "sent": 20000,
+      "achieved_rps": 2499.7,
+      "by_status_code": {
+        "200": 7594,
+        "201": 2404,
+        "409": 1,
+        "429": 10001
+      },
+      "transport_errors": 0,
+      "latency_ms_all": {
+        "P50": 0.908,
+        "P90": 3.674,
+        "P99": 171.029,
+        "P999": 234.582,
+        "Max": 254.238
+      },
+      "latency_ms_normal_clients": {
+        "P50": 2.54,
+        "P90": 3.849,
+        "P99": 173.209,
+        "P999": 234.582,
+        "Max": 251.005
+      },
+      "latency_ms_post": {
+        "P50": 3.265,
+        "P90": 3.984,
+        "P99": 169.685,
+        "P999": 236.881,
+        "Max": 251.005
+      },
+      "latency_ms_get": {
+        "P50": 0.999,
+        "P90": 3.695,
+        "P99": 174.46,
+        "P999": 228.075,
+        "Max": 250.202
+      },
+      "triage_by_source": {
+        "agent": 1907,
+        "fallback_low_confidence": 259
+      },
+      "hot_client_429_ratio": 0.867,
+      "normal_clients_429_ratio": 0,
+      "unique_idempotency_keys_ok": 2166,
+      "tickets_stored": 2166,
+      "cache_hit_ratio": 0.66,
+      "after_drain": {
+        "breaker_notifier": "closed",
+        "breaker_triage": "closed",
+        "dlq": 0,
+        "notified": 2166,
+        "notifier_calls": 2166,
+        "notifier_failed": 0,
+        "outbox_pending": 0,
+        "queue_delayed": 0,
+        "queue_ready": 0,
+        "triage_agent": 1907,
+        "triage_fallback_total": 259
+      }
+    },
+    {
+      "scenario": {
+        "name": "noisy_neighbor",
+        "description": "Baseline a 1000 rps más un tenant abusivo a 1500 rps con límite de 200 rps por tenant.",
+        "rps": 1000,
+        "seconds": 8,
+        "write_ratio": 0.3,
+        "duplicate_post_ratio": 0.1,
+        "clients": 50,
+        "hot_client_rps": 1500,
+        "downstream_error_rate": 0,
+        "rate_limit_per_client": 200,
+        "rate_burst_per_client": 400
+      },
+      "repetition": 3,
+      "warmup_samples_excluded": 2500,
+      "sent": 20000,
+      "achieved_rps": 2499.7,
+      "by_status_code": {
+        "200": 7594,
+        "201": 2402,
+        "409": 3,
+        "429": 10001
+      },
+      "transport_errors": 0,
+      "latency_ms_all": {
+        "P50": 0.858,
+        "P90": 3.465,
+        "P99": 4.082,
+        "P999": 4.447,
+        "Max": 4.72
+      },
+      "latency_ms_normal_clients": {
+        "P50": 1.724,
+        "P90": 3.675,
+        "P99": 4.183,
+        "P999": 4.49,
+        "Max": 4.72
+      },
+      "latency_ms_post": {
+        "P50": 3.203,
+        "P90": 3.87,
+        "P99": 4.301,
+        "P999": 4.636,
+        "Max": 4.72
+      },
+      "latency_ms_get": {
+        "P50": 0.929,
+        "P90": 3.507,
+        "P99": 4.114,
+        "P999": 4.447,
+        "Max": 4.546
+      },
+      "triage_by_source": {
+        "agent": 1907,
+        "fallback_low_confidence": 259
+      },
+      "hot_client_429_ratio": 0.867,
+      "normal_clients_429_ratio": 0,
+      "unique_idempotency_keys_ok": 2166,
+      "tickets_stored": 2166,
+      "cache_hit_ratio": 0.661,
+      "after_drain": {
+        "breaker_notifier": "closed",
+        "breaker_triage": "closed",
+        "dlq": 0,
+        "notified": 2166,
+        "notifier_calls": 2166,
+        "notifier_failed": 0,
+        "outbox_pending": 0,
+        "queue_delayed": 0,
+        "queue_ready": 0,
+        "triage_agent": 1907,
+        "triage_fallback_total": 259
+      }
+    }
+  ]
+}

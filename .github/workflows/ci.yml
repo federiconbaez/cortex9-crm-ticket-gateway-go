@@ -1,0 +1,26 @@
+name: ci
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - name: gofmt
+        run: test -z "$(gofmt -l .)"
+      - run: go vet ./...
+      - name: staticcheck
+        run: go tool staticcheck ./...
+      - name: tests con detector de carreras
+        run: go test -race -count=1 ./...
+      - name: cobertura
+        run: ./scripts/coverage.sh
+      - name: prueba de carga corta (humo, no compara tiempos)
+        run: go run ./cmd/loadtest -seconds 2 -reps 1 -out /tmp/loadtest
